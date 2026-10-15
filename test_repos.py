@@ -7,9 +7,10 @@ cle = os.getenv("GITHUB_TOKEN")
 
 url = "https://api.github.com/users/ivankpada-lab/repos"
 headers = {"Authorization": "Bearer " + cle}
+params={"sort": "created", "per_page": 2, "direction": "desc"}
 
 try:
-    reponse = requests.get(url, headers=headers)
+    reponse = requests.get(url, headers=headers, params=params)
     if reponse.status_code == 200:
         repos = reponse.json()
         for depot in repos:
